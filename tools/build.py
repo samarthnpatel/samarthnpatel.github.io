@@ -22,6 +22,16 @@ button.btn:hover{border-color:var(--accent);color:var(--accent)}
 .gal figcaption{font-size:13px;color:var(--grey)}
 .fus text{font-family:'Inter',sans-serif;font-size:19px;fill:var(--grey)}
 .sheet .eyebrow{padding-right:96px}
+.tile.c{justify-content:center;align-items:center;text-align:center}
+.tile.c .btn{align-self:center}
+.spec{width:100%;border-collapse:collapse;font-size:15px}
+.spec th,.spec td{text-align:left;vertical-align:top;padding:10px 12px 10px 0;border-bottom:1px solid var(--line)}
+.spec th{width:34%;font-weight:600;color:var(--ink)}
+.spec td{color:var(--grey)}
+.sheet .lead-c{text-align:center;align-items:center}
+.kpis{display:flex;flex-wrap:wrap;gap:12px}
+.kpis span{flex:1 1 150px;background:var(--surface);border-radius:14px;padding:16px 18px;font-size:13px;color:var(--grey)}
+.kpis b{display:block;font-family:'Inter Tight',sans-serif;font-size:24px;color:var(--ink)}
 @media (max-width:600px){.sheet-in{padding:24px}}
 '''
 
@@ -33,8 +43,12 @@ def sheet(id, eyebrow, title, lead, sections, gallery):
            '<button class="x" data-close>Close</button>',
            f'<div class="eyebrow">{eyebrow}</div>', f'<h2 id="t-{id}">{title}</h2>', f'<p class="grey" style="font-size:19px">{lead}</p>']
     for h, items in sections:
+        if h == 'KPI':
+            out.append('<div class="kpis">' + ''.join(f'<span><b>{b}</b>{t}</span>' for b,t in items) + '</div>'); continue
         out.append(f'<h3>{h}</h3>')
         if isinstance(items, str): out.append(f'<p>{items}</p>')
+        elif items and isinstance(items[0], tuple):
+            out.append('<table class="spec">' + ''.join(f'<tr><th scope="row">{a}</th><td>{b}</td></tr>' for a,b in items) + '</table>')
         else: out.append('<ul class="pts">' + ''.join(f'<li>{i}</li>' for i in items) + '</ul>')
     if gallery:
         out.append('<div class="gal">')
@@ -206,7 +220,7 @@ body = f'''<div class="pf" style="--bg: #ffffff; --surface: #f5f5f7; --card: #f5
 <div class="wrap" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px">
 <div class="eyebrow">Available for co-op, Summer 2027</div>
 <h1 style="font-size: clamp(44px, 7.4vw, 88px); line-height: 1.02; letter-spacing: -0.04em; max-width: 940px">Low-voltage electronics for a 400&nbsp;V race car.</h1>
-<p class="grey" style="font-size: 21px; line-height: 1.4; max-width: 700px">Sam Patel. Hardware Engineer and Co-Lead, Grounded Low Voltage Team, SFU Formula SAE Electric. Mechatronic Systems Engineering &amp; Business Administration, Simon Fraser University.</p>
+<p class="grey" style="font-size: 21px; line-height: 1.4; max-width: 700px">Sam Patel. Hardware Engineer and Lead, Grounded Low Voltage Team, SFU Formula SAE Electric. Mechatronic Systems Engineering &amp; Business Administration, Simon Fraser University.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center">
 <a href="mailto:samarth_patel@sfu.ca" class="btn" style="background: var(--accent); color: var(--on-accent)">Email me</a>
 <a href="#work" class="btn" style="border: 1px solid var(--dash)">See the work</a>
@@ -220,8 +234,8 @@ body = f'''<div class="pf" style="--bg: #ffffff; --surface: #f5f5f7; --card: #f5
 <div class="row rv" style="align-items: flex-end">
 <div class="col">
 <div class="eyebrow">Team Phantom · Grounded Low Voltage</div>
-<h2 class="h2">Co-lead of the 10+ member low-voltage team.</h2>
-<p class="grey">Co-lead a 10+ member hardware and firmware team, assigning tasks, setting deadlines, reviewing designs and test results, and managing the budget and BOM. The team is responsible for the six systems below. Select a board for details.</p>
+<h2 class="h2">Lead of the 10+ member low-voltage team.</h2>
+<p class="grey">Lead a 10+ member hardware and firmware team, assigning tasks, setting deadlines, reviewing designs and test results, and managing the budget and BOM. The team is responsible for the six systems below. Select a board for details.</p>
 </div>
 <figure style="flex: 1 1 360px; margin: 0; display: flex; flex-direction: column; gap: 10px">
 {img('glv-enclosure.jpg','Low-voltage enclosure with the control and safety boards mounted','width: 100%; height: 560px; object-fit: cover; border-radius: 28px')}
@@ -240,7 +254,7 @@ body = f'''<div class="pf" style="--bg: #ffffff; --surface: #f5f5f7; --card: #f5
 <div class="wrap" style="display: flex; flex-direction: column; gap: 32px">
 <h2 class="h2 rv">More work</h2>
 <div class="rv" style="display: flex; flex-wrap: wrap; gap: 16px">
-<div class="tile" style="flex: 2 1 560px; min-height: 240px; background: var(--ink); color: var(--bg)"><h3 style="font-size: 32px">Co-Lead, Grounded Low Voltage Team</h3><p style="color: var(--bg); opacity: .8">10+ member hardware and firmware team. Manage the budget and BOM. Interviewed and hired six new members in Fall 2026.</p></div>
+<div class="tile" style="flex: 2 1 560px; min-height: 240px; background: var(--ink); color: var(--bg)"><h3 style="font-size: 32px">Lead, Grounded Low Voltage Team</h3><p style="color: var(--bg); opacity: .8">10+ member hardware and firmware team. Manage the budget and BOM. Interviewed and hired six new members in Fall 2026.</p></div>
 <div class="tile"><h3>Finance Lead</h3><p>Managed approximately $20,000 in finances for the 40-member team.</p></div>
 <div class="tile" style="flex: 2 1 560px; gap: 14px; justify-content: flex-start">
 {FUS}
@@ -267,12 +281,12 @@ doc = f'''<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sam Patel | Hardware Portfolio</title>
-<meta name="description" content="Sam Patel. Hardware Engineer and Co-Lead, Grounded Low Voltage Team, SFU Formula SAE Electric. Mechatronic Systems Engineering and Business Administration, Simon Fraser University.">
+<meta name="description" content="Sam Patel. Hardware Engineer and Lead, Grounded Low Voltage Team, SFU Formula SAE Electric. Mechatronic Systems Engineering and Business Administration, Simon Fraser University.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://samarthnpatel.github.io/">
 <meta property="og:site_name" content="Sam Patel">
 <meta property="og:title" content="Sam Patel | Hardware Portfolio">
-<meta property="og:description" content="Hardware Engineer and Co-Lead, Grounded Low Voltage Team, SFU Formula SAE Electric. Mechatronic Systems Engineering and Business Administration, Simon Fraser University.">
+<meta property="og:description" content="Hardware Engineer and Lead, Grounded Low Voltage Team, SFU Formula SAE Electric. Mechatronic Systems Engineering and Business Administration, Simon Fraser University.">
 <meta property="og:image" content="https://samarthnpatel.github.io/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
