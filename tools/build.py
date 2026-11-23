@@ -267,7 +267,7 @@ sheet('finance', 'Team Phantom · Business', 'Finance Lead',
 sheet('honour', 'Simon Fraser University', 'Dean\'s Honour Roll, Summer 2026',
  'Awarded for the Summer 2026 term and recorded on my SFU academic record.',
  [('KPI', [('3.87','term GPA, 4.33 scale'),('15','units that term'),('3.50','minimum term GPA')]),
-  ('Criteria', 'SFU admits students to the Dean\'s Honour Roll with a term GPA of 3.50 or higher, at least 30 units completed at SFU, and at least 12 graded units in the term.'),
+  ('Criteria', 'SFU admits students to the Dean\'s Honour Roll with a term GPA of 3.50 or higher, at least 30 units completed at SFU, and at least 12 graded units in the term. Details on the <a href="https://www.sfu.ca/students/honour-rolls/deans-honour-roll.html">SFU Dean\'s Honour Roll page</a>.'),
   ('Program', 'Double degree in Mechatronic Systems Engineering and Business Administration, Simon Fraser University. Expected June 2030.')],
  []),
 ]
