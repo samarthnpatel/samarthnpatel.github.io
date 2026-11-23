@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sam Patel | Hardware Portfolio</title>
+<meta name="description" content="Sam Patel. Hardware Engineer and Co-Lead, Grounded Low Voltage Team, SFU Formula SAE Electric. Mechatronic Systems Engineering and Business Administration, Simon Fraser University.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600&display=swap">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0}
+img,video{max-width:100%}
+a{color:inherit}a:hover{opacity:.75}
+.pf{font-family:'Inter',sans-serif;font-size:17px;line-height:1.5;color:var(--ink);background:var(--bg)}
+.pf h1,.pf h2,.pf h3,.pf .num{font-family:'Inter Tight',sans-serif;font-weight:600;margin:0}
+.pf p{margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+.sec{padding:112px 0}
+.alt{background:var(--surface)}
+.eyebrow{font-size:14px;font-weight:600;color:var(--accent);letter-spacing:.02em}
+.grey{color:var(--grey)}
+.row{display:flex;flex-wrap:wrap;gap:48px 64px;align-items:center}
+.col{flex:1 1 400px;display:flex;flex-direction:column;gap:20px}
+.num{font-size:clamp(72px,11vw,136px);line-height:.95;letter-spacing:-.045em}
+.h2{font-size:clamp(30px,4vw,44px);line-height:1.08;letter-spacing:-.02em}
+.stats{display:flex;flex-wrap:wrap;gap:16px 40px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--grey)}
+.stats b{display:block;font-family:'Inter Tight',sans-serif;font-size:24px;font-weight:600;color:var(--ink)}
+.ph{flex:1 1 400px;min-height:400px;border-radius:28px;background:var(--card);border:1px dashed var(--dash);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;box-sizing:border-box;font-size:14px;color:var(--grey)}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:980px;font-size:15px;font-weight:500;text-decoration:none}
+.tile{flex:1 1 280px;min-height:180px;border-radius:28px;background:var(--card);padding:28px;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;justify-content:flex-end}
+.tile h3{font-size:22px;letter-spacing:-.01em}
+.tile p{font-size:15px;color:var(--grey)}
+.sys{flex:1 1 300px;border-radius:18px;background:var(--card);padding:22px 24px;box-sizing:border-box}
+.sys h3{font-size:20px}
+.sys p{font-size:15px;color:var(--grey)}
+.nine{display:grid;grid-template-columns:repeat(3,72px);grid-auto-rows:72px}
+.nine i{display:block;background:var(--accent);border:1px solid var(--bg);box-sizing:border-box;border-radius:4px}
+
+.num,.stats b{font-variant-numeric:tabular-nums}
+.scene.pin{padding:0;height:240vh}
+.scene.pin .stick{position:sticky;top:0;height:100vh;display:flex;align-items:center}
+.scene.pin .stick>.wrap{width:100%}
+.scene.pin .stage{display:grid;place-items:center;min-height:460px}
+.scene.pin .stage>*{grid-area:1/1}
+.scene.pin .nine{transform:scale(1.5);opacity:calc(1 - var(--f,0))}
+.scene.pin .nine i{animation:none;transform:translate(calc(var(--x)*1.4*var(--s,1)),calc(var(--y)*1.4*var(--s,1)))}
+.scene.pin .render{opacity:var(--f,0);transform:scale(calc(.92 + .08*var(--f,0)))}
+@keyframes rv{from{opacity:0;transform:translateY(24px)}}
+@keyframes merge{from{transform:translate(var(--x),var(--y))}}
+@supports (animation-timeline: view()){
+@media (prefers-reduced-motion: no-preference){
+.rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+.nine i{animation:merge linear both;animation-timeline:view();animation-range:entry 20% cover 50%}
+}}
+
+.pts{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.5}
+button{font:inherit;color:inherit}
+button.sys{display:block;width:100%;text-align:left;border:1px solid transparent;cursor:pointer;transition:transform .2s ease,border-color .2s ease}
+button.sys:hover,button.sys:focus-visible{transform:translateY(-3px);border-color:var(--accent)}
+.more{display:inline-block;margin-top:10px;font-size:14px;font-weight:600;color:var(--accent)}
+button.btn{cursor:pointer;background:none;border:1px solid var(--dash);align-self:flex-start}
+button.btn:hover{border-color:var(--accent);color:var(--accent)}
+.sheet{border:none;padding:0;border-radius:28px;width:100%;max-width:min(940px,calc(100vw - 24px));max-height:calc(100vh - 24px);background:var(--bg);color:var(--ink)}
+.sheet::backdrop{background:rgba(0,0,0,.6)}
+.sheet-in{padding:44px;display:flex;flex-direction:column;gap:18px}
+.sheet h2{font-size:clamp(28px,4vw,40px);line-height:1.1;letter-spacing:-.02em}
+.sheet h3{font-size:19px;margin-top:10px}
+.sheet .x{position:sticky;top:12px;align-self:flex-end;min-height:44px;padding:0 18px;border-radius:980px;border:1px solid var(--dash);background:var(--bg);cursor:pointer;font-size:14px;font-weight:500;margin-bottom:-30px;z-index:1}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px}
+.gal figure{margin:0;display:flex;flex-direction:column;gap:8px}
+.gal img,.gal video{width:100%;border-radius:14px;border:1px solid var(--line);background:#fff}
+.gal figcaption{font-size:13px;color:var(--grey)}
+.fus text{font-family:'Inter',sans-serif;font-size:19px;fill:var(--grey)}
+.sheet .eyebrow{padding-right:96px}
+@media (max-width:600px){.sheet-in{padding:24px}}
+</style>
+</head>
+<body>
+<div class="pf" style="--bg: #ffffff; --surface: #f5f5f7; --card: #f5f5f7; --ink: #1d1d1f; --grey: #5f5f65; --line: #d2d2d7; --dash: #86868b; --accent: #2449e8; --on-accent: #ffffff">
+
+<div style="--bg: #000000; --ink: #f5f5f7; --grey: #a1a1a6; --dash: #86868b; --accent: #5b8cff; --on-accent: #000000; background: #000000; color: #f5f5f7">
+<div class="wrap" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; padding-top: 16px; padding-bottom: 16px; font-size: 14px">
+<span style="font-weight: 600">Sam Patel</span>
+<div style="display: flex; flex-wrap: wrap; gap: 4px 28px; align-items: center">
+<a href="#boards" style="display: inline-flex; align-items: center; min-height: 44px; text-decoration: none">Boards</a>
+<a href="#work" style="display: inline-flex; align-items: center; min-height: 44px; text-decoration: none">Projects</a>
+<a href="https://linkedin.com/in/samarthnpatel" style="display: inline-flex; align-items: center; min-height: 44px; text-decoration: none">LinkedIn</a>
+<a href="https://github.com/samarthnpatel" style="display: inline-flex; align-items: center; min-height: 44px; text-decoration: none">GitHub</a>
+</div>
+</div>
+<div class="sec" style="padding: 120px 0 136px">
+<div class="wrap" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px">
+<div class="eyebrow">Available for co-op, Summer 2027</div>
+<h1 style="font-size: clamp(44px, 7.4vw, 88px); line-height: 1.02; letter-spacing: -0.04em; max-width: 940px">Low-voltage electronics for a 400&nbsp;V race car.</h1>
+<p class="grey" style="font-size: 21px; line-height: 1.4; max-width: 700px">Sam Patel. Hardware Engineer and Co-Lead, Grounded Low Voltage Team, SFU Formula SAE Electric. Mechatronic Systems Engineering &amp; Business Administration, Simon Fraser University.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center">
+<a href="mailto:samarth_patel@sfu.ca" class="btn" style="background: var(--accent); color: var(--on-accent)">Email me</a>
+<a href="#work" class="btn" style="border: 1px solid var(--dash)">See the work</a>
+</div>
+</div>
+</div>
+</div>
+
+<div class="sec alt" id="boards">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 40px">
+<div class="row rv" style="align-items: flex-end">
+<div class="col">
+<div class="eyebrow">Team Phantom · Grounded Low Voltage</div>
+<h2 class="h2">Co-lead of the 10+ member low-voltage team.</h2>
+<p class="grey">Co-lead a 10+ member hardware and firmware team, assigning tasks, setting deadlines, reviewing designs and test results, and managing the budget and BOM. The team is responsible for the six systems below. Select a board for details.</p>
+</div>
+<figure style="flex: 1 1 360px; margin: 0; display: flex; flex-direction: column; gap: 10px">
+<img src="assets/glv-enclosure.jpg" alt="Low-voltage enclosure with the control and safety boards mounted" style="width: 100%; height: 560px; object-fit: cover; border-radius: 28px">
+<figcaption class="grey" style="font-size: 14px">Low-voltage enclosure. Power distribution board in red, vehicle control unit in blue, shutdown and BSPD board at bottom right.</figcaption>
+</figure>
+</div>
+<div class="rv" style="display: flex; flex-wrap: wrap; gap: 16px">
+<button class="sys" data-open="vcu" style="background: var(--bg)"><img src="assets/vcu-3d.jpg" alt="VCU, Altium 3D view" style="display: block; width: 100%; height: 170px; object-fit: cover; object-position: center; border-radius: 10px; margin-bottom: 14px"><h3>Vehicle Control Unit</h3><p>Leading the firmware migration to an STM32H7.</p><span class="more">View details</span></button>
+<button class="sys" data-open="daq" style="background: var(--bg)"><img src="assets/daq-perfboard.jpg" alt="Current DAQ perfboard build" style="display: block; width: 100%; height: 170px; object-fit: cover; object-position: center 40%; border-radius: 10px; margin-bottom: 14px"><h3>Data Acquisition</h3><p>Leading the PCB design and sensor implementation.</p><span class="more">View details</span></button>
+<button class="sys" data-open="pdb" style="background: var(--bg)"><img src="assets/pdb-3d.jpg" alt="PDB, Altium 3D view" style="display: block; width: 100%; height: 170px; object-fit: cover; object-position: center; border-radius: 10px; margin-bottom: 14px"><h3>Power Distribution Board</h3><p>Debugged and tested.</p><span class="more">View details</span></button>
+<button class="sys" data-open="lvsdb" style="background: var(--bg)"><img src="assets/lvsdb-3d.jpg" alt="LVSDB, Altium 3D view" style="display: block; width: 100%; height: 170px; object-fit: cover; object-position: center 30%; border-radius: 10px; margin-bottom: 14px"><h3>Low-Voltage Shutdown Board</h3><p>Soldered the replacement board. Bring-up and troubleshooting.</p><span class="more">View details</span></button>
+<button class="sys" data-open="lvsdb" style="background: var(--bg)"><img src="assets/bspd-schematic.jpg" alt="BSPD schematic" style="display: block; width: 100%; height: 170px; object-fit: cover; object-position: center 55%; border-radius: 10px; margin-bottom: 14px"><h3>Brake System Plausibility Device</h3><p>Schematic and datasheet review. Five design faults identified.</p><span class="more">View details</span></button>
+<button class="sys" data-open="carrier" style="background: var(--bg)"><img src="assets/carrier-board-schematic.jpg" alt="Carrier board schematic" style="display: block; width: 100%; height: 170px; object-fit: cover; object-position: left top; border-radius: 10px; margin-bottom: 14px"><h3>Carrier Board and Wiring Harness</h3><p>Designed in Altium Designer. 150+ pin interface documented.</p><span class="more">View details</span></button>
+</div>
+</div>
+</div>
+
+<div class="sec scene" id="work">
+<div class="stick">
+<div class="wrap row">
+<div class="col rv">
+<div class="eyebrow">01 · Carrier board · Team Phantom</div>
+<div class="num">9 → 1</div>
+<h2 class="h2">Carrier board consolidating 9 PCBs and 20+ vehicle signals.</h2>
+<ul class="pts"><li>Designed a carrier board in Altium Designer that consolidates 9 PCBs and 20+ vehicle signals for a 400 V race car, with sealed Samtec connectors at the enclosure.</li><li>Documented the full low-voltage wiring interface (150+ pins) from harness drawings and board schematics, now the team's reference for harness integration and debugging.</li></ul>
+<div class="stats"><span><b>20+</b>vehicle signals</span><span><b>150+</b>pins documented</span><span><b>400 V</b>vehicle</span><span><b>Complete</b>design status</span></div>
+<button class="btn" data-open="carrier">Full details</button>
+</div>
+<div class="ph stage" style="flex-direction: column; gap: 28px; border: none; padding: 28px"><div class="nine" role="img" aria-label="Nine small boards merging into one"><i style="--x: -22px; --y: -22px"></i><i style="--x: 0px; --y: -22px"></i><i style="--x: 22px; --y: -22px"></i><i style="--x: -22px; --y: 0px"></i><i style="--x: 0px; --y: 0px"></i><i style="--x: 22px; --y: 0px"></i><i style="--x: -22px; --y: 22px"></i><i style="--x: 0px; --y: 22px"></i><i style="--x: 22px; --y: 22px"></i></div><img class="render" src="assets/carrier-board-schematic.jpg" alt="Carrier board schematic in Altium Designer" style="width: 100%; border-radius: 12px; border: 1px solid var(--line)"></div>
+</div>
+</div>
+</div>
+
+<div class="sec alt">
+<div class="wrap row">
+<div class="col rv">
+<div class="eyebrow">02 · Shutdown circuit and BSPD · Team Phantom</div>
+<div class="num"><span data-count="5">5</span> faults</div>
+<h2 class="h2">Bring-up and troubleshooting on two safety systems.</h2>
+<ul class="pts"><li>Performed bring-up and troubleshooting on two safety systems, the low-voltage shutdown circuit and the brake system plausibility device, soldered the replacement board, identified five design faults through a schematic and datasheet review, and replaced the overvolted logic IC.</li><li>Built low-voltage wire harnesses and verified continuity and signal integrity with oscilloscopes and multimeters, including pin-by-pin checks of 30-pin connectors.</li></ul>
+<div class="stats"><span><b data-count="5">5</b>design faults</span><span><b>3.6 V</b>part on a 5 V rail</span><span><b>Working</b>board status</span></div>
+<button class="btn" data-open="lvsdb">Full details</button>
+</div>
+<figure style="flex: 1 1 400px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 10px"><img src="assets/bspd-schematic.jpg" alt="BSPD schematic" style="width: 100%; border-radius: 20px; border: 1px solid var(--line)"><figcaption class="grey" style="font-size: 14px">BSPD schematic.</figcaption></figure>
+</div>
+</div>
+
+<div class="sec">
+<div class="wrap row">
+<div class="col rv">
+<div class="eyebrow">03 · Three-phase linear induction motor</div>
+<div class="num"><span data-count="2.15">2.15</span> m/s²</div>
+<h2 class="h2">Predicted cart acceleration. Measured 2 to 3 m/s².</h2>
+<ul class="pts"><li>Designed and soldered the motor's three-phase power stage on perfboard, deriving the RLC component values from the transfer function to produce ±120° phase shifts at matched amplitude from a single function generator.</li><li>Measured 2 to 3 m/s² cart acceleration against a 2.15 m/s² prediction after tracing low coil current (78 mA) and switching to synchronized generators with a 300 W amplifier.</li></ul>
+<div class="stats"><span><b>±120°</b>phase shifts</span><span><b>150 Hz</b>operating frequency</span><span><b>300 W</b>amplifier</span></div>
+<button class="btn" data-open="motor">Full details</button>
+</div>
+<img src="assets/induction-motor-bench.jpg" alt="Linear induction motor track on the lab bench with oscilloscope, power supplies and amplifier board" style="flex: 1 1 400px; min-width: 0; width: 100%; max-width: 560px; height: 420px; object-fit: cover; object-position: 60% 60%; border-radius: 28px">
+</div>
+</div>
+
+<div class="sec alt">
+<div class="wrap row">
+<div class="col rv">
+<div class="eyebrow">04 · Vision-guided sorting robot</div>
+<div class="num"><span data-count="3">3</span> bugs fixed</div>
+<h2 class="h2">YOLOX object detection on a Raspberry Pi robot arm.</h2>
+<ul class="pts"><li>Deployed a YOLOX object detector (C++, ncnn) on a Raspberry Pi and connected it to the robot's Python arm controller through a named pipe.</li><li>Fixed camera buffering, pipe communication, and detection-threshold bugs to run detection at full frame rate.</li></ul>
+<div class="stats"><span><b>C++, Python</b>languages</span><span><b>ncnn</b>inference framework</span><span><b>3</b>model sizes tested</span></div>
+<button class="btn" data-open="robot">Full details</button>
+</div>
+<figure style="flex: 1 1 400px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 10px"><video src="assets/robot-run.mp4" poster="assets/robot-still.jpg" controls muted loop playsinline preload="metadata" aria-label="The robot driving a taped line track and steering around an obstacle" style="width: 100%; border-radius: 28px; background: #000000"></video><figcaption class="grey" style="font-size: 14px">The robot on a line-tracking and obstacle-avoidance run.</figcaption></figure>
+</div>
+</div>
+
+<div class="sec">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 32px">
+<h2 class="h2 rv">More work</h2>
+<div class="rv" style="display: flex; flex-wrap: wrap; gap: 16px">
+<div class="tile" style="flex: 2 1 560px; min-height: 240px; background: var(--ink); color: var(--bg)"><h3 style="font-size: 32px">Co-Lead, Grounded Low Voltage Team</h3><p style="color: var(--bg); opacity: .8">10+ member hardware and firmware team. Manage the budget and BOM. Interviewed and hired six new members in Fall 2026.</p></div>
+<div class="tile"><h3>Finance Lead</h3><p>Managed approximately $20,000 in finances for the 40-member team.</p></div>
+<div class="tile" style="flex: 2 1 560px; gap: 14px; justify-content: flex-start">
+<svg class="fus" viewBox="0 0 900 230" role="img" aria-label="Side view of the four-section sample fuselage" style="width:100%;height:auto">
+<g fill="none" stroke="var(--ink)" stroke-width="2">
+<path d="M70 80 L20 110 L70 140 Z"/>
+<rect x="70" y="80" width="190" height="60"/><rect x="260" y="80" width="190" height="60"/><rect x="450" y="80" width="190" height="60"/><rect x="640" y="80" width="190" height="60"/>
+<path d="M740 80 L770 35 L815 35 L800 80 Z"/><path d="M740 140 L770 185 L815 185 L800 140 Z"/>
+<rect x="480" y="62" width="34" height="18"/><rect x="480" y="140" width="34" height="18"/>
+</g>
+<g fill="var(--accent)" opacity=".28"><rect x="200" y="86" width="120" height="48"/><rect x="390" y="86" width="120" height="48"/><rect x="580" y="86" width="120" height="48"/></g>
+<line x1="165" y1="80" x2="165" y2="140" stroke="var(--ink)" stroke-dasharray="4 4"/>
+<text x="165" y="215" text-anchor="middle">1 Nose</text><text x="355" y="215" text-anchor="middle">2 Upper body</text><text x="545" y="215" text-anchor="middle">3 Canard module</text><text x="735" y="215" text-anchor="middle">4 Fin can</text>
+<text x="260" y="20" text-anchor="middle">Coupler sleeves at each joint</text>
+<line x1="260" y1="26" x2="260" y2="84" stroke="var(--grey)"/><line x1="260" y1="26" x2="450" y2="84" stroke="var(--grey)"/><line x1="260" y1="26" x2="640" y2="84" stroke="var(--grey)"/>
+</svg>
+<h3>Parametric rocket fuselage</h3><p>SolidWorks assembly driven by a 23-variable equation file. SFU Rocketry.</p>
+<button class="btn" data-open="fuselage">Full details</button>
+</div>
+<div class="tile"><h3>Dean's Honour Roll</h3><p>2026, Simon Fraser University.</p></div>
+<div class="tile" style="flex: 2 1 560px; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 24px">
+<img src="assets/braille-assembly.jpg" alt="Exploded assembly drawing of the speech-to-braille device" style="flex: 1 1 260px; min-width: 0; max-width: 360px; width: 100%; border-radius: 12px">
+<div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 8px"><h3>Speech-to-braille converter</h3><p>Schematic and PCB layout in Altium Designer for a 2×10 braille cell array driven from an STM32.</p><button class="btn" data-open="braille" style="margin-top: 6px">Full details</button></div>
+</div>
+<div class="tile" style="flex: 1 1 100%; background: var(--accent); color: var(--on-accent)"><h3 style="font-size: 32px">Available for co-op, Summer 2027</h3><p style="color: var(--on-accent)"><a href="mailto:samarth_patel@sfu.ca">samarth_patel@sfu.ca</a> · <a href="https://linkedin.com/in/samarthnpatel">LinkedIn</a> · <a href="https://github.com/samarthnpatel">GitHub</a></p></div>
+</div>
+</div>
+</div>
+
+<dialog class="sheet" id="d-vcu" aria-labelledby="t-vcu"><div class="sheet-in">
+<button class="x" data-close>Close</button>
+<div class="eyebrow">Team Phantom · Grounded Low Voltage</div>
+<h2 id="t-vcu">Vehicle Control Unit</h2>
+<p class="grey" style="font-size:19px">TMS570 microcontroller board. The schematic covers CAN, three contactor enables, BSPD and IMD inputs, BMS UART, a watchdog, a DAC output and on-board buck converters. Revision 4, ten sheets.</p>
+<h3>My work</h3>
+<ul class="pts"><li>Leading the firmware migration from the TMS570 to an STM32H7, with a NUCLEO-H755ZI evaluation board on order.</li><li>Reviewing the revision 4 schematic against the 2027 Formula SAE rules.</li><li>Assigning tasks and reviewing designs for the hardware and firmware members working on the board.</li></ul>
+<div class="gal">
+<figure><img src="assets/vcu-3d.jpg" alt="VCU, Altium 3D view" loading="lazy" style=""><figcaption>VCU, Altium 3D view</figcaption></figure>
+<figure><img src="assets/vcu-schematic.jpg" alt="VCU schematic, microcontroller signals sheet" loading="lazy" style=""><figcaption>VCU schematic, microcontroller signals sheet</figcaption></figure>
+<figure><img src="assets/vcu-can.jpg" alt="VCU schematic, CAN sheet" loading="lazy" style=""><figcaption>VCU schematic, CAN sheet</figcaption></figure>
+</div>
+</div></dialog>
+<dialog class="sheet" id="d-daq" aria-labelledby="t-daq"><div class="sheet-in">
+<button class="x" data-close>Close</button>
+<div class="eyebrow">Team Phantom · Grounded Low Voltage</div>
+<h2 id="t-daq">Data Acquisition</h2>
+<p class="grey" style="font-size:19px">Reads four wheel speed sensors, two coolant pressure sensors, two coolant temperature sensors and an IMU, with a CAN output. The current build is on perfboard.</p>
+<h3>My work</h3>
+<ul class="pts"><li>Leading the PCB design that replaces the perfboard build.</li><li>Responsible for sensor implementation on the redesign.</li></ul>
+<div class="gal">
+<figure><img src="assets/daq-perfboard.jpg" alt="Current DAQ perfboard build" loading="lazy" style=""><figcaption>Current DAQ perfboard build</figcaption></figure>
+<figure><img src="assets/daq-perfboard-2.jpg" alt="DAQ perfboard, side view" loading="lazy" style=""><figcaption>DAQ perfboard, side view</figcaption></figure>
+</div>
+</div></dialog>
+<dialog class="sheet" id="d-pdb" aria-labelledby="t-pdb"><div class="sheet-in">
+<button class="x" data-close>Close</button>
+<div class="eyebrow">Team Phantom · Grounded Low Voltage</div>
+<h2 id="t-pdb">Power Distribution Board</h2>
+<p class="grey" style="font-size:19px">Supplies the low-voltage boards from the 13.2 V battery input. LT4363 over- and under-voltage protection with 17.22 V and 9.54 V cutoffs, a current monitor with I2C output across a 0.002 Ω shunt, and an LM3489 12 V to 5 V buck converter.</p>
+<h3>My work</h3>
+<ul class="pts"><li>Debugged and tested the board.</li><li>Checking the board against the 2027 Formula SAE rules as part of the low-voltage rules audit.</li></ul>
+<div class="gal">
+<figure><img src="assets/pdb-3d.jpg" alt="PDB, Altium 3D view" loading="lazy" style=""><figcaption>PDB, Altium 3D view</figcaption></figure>
+<figure><img src="assets/pdb-protection.jpg" alt="PDB schematic, protection sheet" loading="lazy" style=""><figcaption>PDB schematic, protection sheet</figcaption></figure>
+<figure><img src="assets/pdb-supply.jpg" alt="PDB schematic, current monitor and 12 V to 5 V buck sheet" loading="lazy" style=""><figcaption>PDB schematic, current monitor and 12 V to 5 V buck sheet</figcaption></figure>
+</div>
+</div></dialog>
+<dialog class="sheet" id="d-lvsdb" aria-labelledby="t-lvsdb"><div class="sheet-in">
+<button class="x" data-close>Close</button>
+<div class="eyebrow">Team Phantom · Grounded Low Voltage</div>
+<h2 id="t-lvsdb">Low-Voltage Shutdown Board and BSPD</h2>
+<p class="grey" style="font-size:19px">One PCB with two safety systems: the low-voltage shutdown circuit, driven from the VCU fault line, and the brake system plausibility device (BSPD).</p>
+<h3>My work</h3>
+<ul class="pts"><li>Performed bring-up and troubleshooting on both safety systems and soldered the replacement board.</li><li>Identified five design faults through a schematic and datasheet review.</li><li>Found a dual OR gate rated to 3.6 V (NC7WP32) on the 5 V rail and replaced it in the design with the 5 V-rated NC7WZ32.</li><li>Found a reversed MOSFET pinout by checking the PCB footprint against the schematic symbol.</li><li>Tested both relays in circuit and isolated, and confirmed coil resistance against the datasheet.</li><li>Built low-voltage wire harnesses and verified continuity and signal integrity with oscilloscopes and multimeters, including pin-by-pin checks of 30-pin connectors.</li></ul>
+<h3>Status</h3>
+<p>Board working.</p>
+<div class="gal">
+<figure><img src="assets/lvsdb-3d.jpg" alt="LVSDB, Altium 3D view" loading="lazy" style=""><figcaption>LVSDB, Altium 3D view</figcaption></figure>
+<figure><img src="assets/lvsdb-schematic.jpg" alt="Shutdown circuit schematic" loading="lazy" style=""><figcaption>Shutdown circuit schematic</figcaption></figure>
+<figure><img src="assets/bspd-schematic.jpg" alt="BSPD schematic" loading="lazy" style=""><figcaption>BSPD schematic</figcaption></figure>
+</div>
+</div></dialog>
+<dialog class="sheet" id="d-carrier" aria-labelledby="t-carrier"><div class="sheet-in">
+<button class="x" data-close>Close</button>
+<div class="eyebrow">Team Phantom · Grounded Low Voltage</div>
+<h2 id="t-carrier">Carrier Board</h2>
+<p class="grey" style="font-size:19px">One board that consolidates 9 PCBs and 20+ vehicle signals inside the low-voltage enclosure of a 400 V race car.</p>
+<h3>My work</h3>
+<ul class="pts"><li>Designed the carrier board in Altium Designer, with sealed Samtec connectors at the enclosure.</li><li>Documented the full low-voltage wiring interface (150+ pins) from harness drawings and board schematics, now the team's reference for harness integration and debugging.</li><li>Mapped connections for the BMS, fault relay, inverter control board, VCU, PDB and shutdown board.</li><li>Integrated the Samtec connectors and fit the PCBs into the enclosure.</li></ul>
+<h3>Connections on the schematic</h3>
+<ul class="pts"><li>Power from the PDB: 5 V to the accelerator pedal sensors, dashboard, pedal box, DAQ and HV current transducer; 12 V to the BMS, inverter, TSAL, dashboard and HV board.</li><li>Faults and safety: BMS fault, IMD fault, BSPD fault, VCU fault, shutdown circuit in and out, set/reset and TSAL enable.</li><li>Driver controls: two accelerator pedal position signals, brake signal, ready-to-drive switch and buzzer, and brake light.</li><li>Communication: CAN high and low to the dashboard and DAQ, and SPI.</li><li>Sensors: four wheel speed, two coolant pressure, two coolant temperature and an IMU.</li><li>Connectors: two 30-pin and one 20-pin Samtec, plus headers for the VCU, PDB, shutdown board and DAQ.</li></ul>
+<h3>Status</h3>
+<p>Design complete. Build planned for the next vehicle.</p>
+<div class="gal">
+<figure><img src="assets/carrier-board-schematic.jpg" alt="Carrier board schematic" loading="lazy" style=""><figcaption>Carrier board schematic</figcaption></figure>
+<figure><img src="assets/carrier-board-3d.jpg" alt="Carrier board, Altium 3D view" loading="lazy" style=""><figcaption>Carrier board, Altium 3D view</figcaption></figure>
+<figure><img src="assets/glv-enclosure.jpg" alt="Low-voltage enclosure with the current boards" loading="lazy" style=""><figcaption>Low-voltage enclosure with the current boards</figcaption></figure>
+</div>
+</div></dialog>
+<dialog class="sheet" id="d-motor" aria-labelledby="t-motor"><div class="sheet-in">
+<button class="x" data-close>Close</button>
+<div class="eyebrow">Technical project</div>
+<h2 id="t-motor">Three-Phase Linear Induction Motor</h2>
+<p class="grey" style="font-size:19px">A small linear induction motor that uses three-phase AC to produce a travelling magnetic field and accelerate a magnetically suspended cart.</p>
+<h3>My work</h3>
+<ul class="pts"><li>Designed and soldered the motor's three-phase power stage on perfboard, deriving the RLC component values from the transfer function to produce ±120° phase shifts at matched amplitude from a single function generator.</li><li>Measured 2 to 3 m/s² cart acceleration against a 2.15 m/s² prediction after tracing low coil current (78 mA) and switching to synchronized generators with a 300 W amplifier.</li></ul>
+<h3>Circuit values</h3>
+<p>Network 1: 100 Ω, 10 µF, 174 mH, output across the capacitor, −120°. Network 2: 65 Ω, 10 µF, 73 mH, output across the inductor, +120°. Operating frequency 150 Hz.</p>
+<div class="gal">
+<figure><img src="assets/induction-motor-bench.jpg" alt="Track, power supplies and amplifier on the bench" loading="lazy" style=""><figcaption>Track, power supplies and amplifier on the bench</figcaption></figure>
+<figure><img src="assets/lim-bench-scope.jpg" alt="Oscilloscope and breadboard during testing" loading="lazy" style=""><figcaption>Oscilloscope and breadboard during testing</figcaption></figure>
+<figure><img src="assets/lim-coils.jpg" alt="Coils under the track" loading="lazy" style=""><figcaption>Coils under the track</figcaption></figure>
+<figure><img src="assets/lim-multimeter.jpg" alt="Coil current measurement" loading="lazy" style=""><figcaption>Coil current measurement</figcaption></figure>
+</div>
+</div></dialog>
+<dialog class="sheet" id="d-robot" aria-labelledby="t-robot"><div class="sheet-in">
+<button class="x" data-close>Close</button>
+<div class="eyebrow">Technical project</div>
+<h2 id="t-robot">Vision-Guided Sorting Robot</h2>
+<p class="grey" style="font-size:19px">A Raspberry Pi robot arm that detects objects with a camera and sorts them.</p>
+<h3>My work</h3>
+<ul class="pts"><li>Deployed a YOLOX object detector (C++, ncnn) on a Raspberry Pi and connected it to the robot's Python arm controller through a named pipe.</li><li>Fixed camera buffering, pipe communication, and detection-threshold bugs to run detection at full frame rate.</li><li>Added runtime model selection across three YOLOX model sizes with frame-rate measurement.</li><li>Sequenced servo moves one at a time to stay within the power supply's current limit.</li></ul>
+<div class="gal">
+<figure><video src="assets/robot-run.mp4" poster="assets/robot-still.jpg" controls muted playsinline preload="none" aria-label="The robot on a line-tracking and obstacle-avoidance run"></video><figcaption>The robot on a line-tracking and obstacle-avoidance run</figcaption></figure>
+</div>
+</div></dialog>
+<dialog class="sheet" id="d-braille" aria-labelledby="t-braille"><div class="sheet-in">
+<button class="x" data-close>Close</button>
+<div class="eyebrow">Technical project</div>
+<h2 id="t-braille">Speech-to-Braille Converter</h2>
+<p class="grey" style="font-size:19px">Schematic, PCB layout and case design for a speech-to-braille device with a 2×10 braille cell array.</p>
+<h3>My work</h3>
+<ul class="pts"><li>Developed the schematic and PCB layout in Altium Designer for an assistive device driving a 2×10 braille cell array from an STM32 microcontroller through a UDN2981A/ULN2803A driver stage.</li></ul>
+<div class="gal">
+<figure><img src="assets/braille-assembly.jpg" alt="Exploded assembly" loading="lazy" style=""><figcaption>Exploded assembly</figcaption></figure>
+<figure><img src="assets/braille-sketch.jpg" alt="Case layout sketch" loading="lazy" style=""><figcaption>Case layout sketch</figcaption></figure>
+<figure><img src="assets/braille-top-case.jpg" alt="Top case drawing" loading="lazy" style=""><figcaption>Top case drawing</figcaption></figure>
+<figure><img src="assets/braille-bottom-case.jpg" alt="Bottom case drawing" loading="lazy" style=""><figcaption>Bottom case drawing</figcaption></figure>
+</div>
+</div></dialog>
+<dialog class="sheet" id="d-fuselage" aria-labelledby="t-fuselage"><div class="sheet-in">
+<button class="x" data-close>Close</button>
+<div class="eyebrow">SFU Rocketry · Active Fin Stabilization</div>
+<h2 id="t-fuselage">Parametric Rocket Fuselage</h2>
+<p class="grey" style="font-size:19px">A 100 mm sample fuselage assembly in SolidWorks, built for SFU Rocketry's 18-inch, 200 kg sounding rocket and laid out to carry the active fin stabilization module.</p>
+<h3>My work</h3>
+<ul class="pts"><li>Built a parametric SolidWorks fuselage assembly driven by a 23-variable equation file, so one edit rescales the airframe.</li><li>Modelled four 240 mm body sections joined by coupler sleeves, with canard slots in section 3 and through-wall fin slots in section 4.</li><li>Corrected three specification errors during the build (coupler length, coupler wall thickness and fin slot clearance) by checking each dimension against published rocket reports.</li><li>Wrote the fuselage design overview for the vehicle: section layout, mass budget, nose cone profile, fin options and stability margins.</li><li>Modelled the canard control module packaging: four bushings with ±15° hard stops, the flight computer mount and the servo wiring.</li><li>Selected the FeeTech STS3215 servo, which has a built-in 12-bit encoder and removes the need for external encoders.</li></ul>
+<h3>Design basis</h3>
+<p>Coupler length 200 mm, one caliber of engagement per side. Four bolts per side at 90° spacing. 0.5 mm coupler slip clearance. 3.2 mm slots for 3 mm fins and canards.</p>
+<div class="gal">
+<figure style="grid-column:1/-1"><svg class="fus" viewBox="0 0 900 230" role="img" aria-label="Side view of the four-section sample fuselage" style="width:100%;height:auto">
+<g fill="none" stroke="var(--ink)" stroke-width="2">
+<path d="M70 80 L20 110 L70 140 Z"/>
+<rect x="70" y="80" width="190" height="60"/><rect x="260" y="80" width="190" height="60"/><rect x="450" y="80" width="190" height="60"/><rect x="640" y="80" width="190" height="60"/>
+<path d="M740 80 L770 35 L815 35 L800 80 Z"/><path d="M740 140 L770 185 L815 185 L800 140 Z"/>
+<rect x="480" y="62" width="34" height="18"/><rect x="480" y="140" width="34" height="18"/>
+</g>
+<g fill="var(--accent)" opacity=".28"><rect x="200" y="86" width="120" height="48"/><rect x="390" y="86" width="120" height="48"/><rect x="580" y="86" width="120" height="48"/></g>
+<line x1="165" y1="80" x2="165" y2="140" stroke="var(--ink)" stroke-dasharray="4 4"/>
+<text x="165" y="215" text-anchor="middle">1 Nose</text><text x="355" y="215" text-anchor="middle">2 Upper body</text><text x="545" y="215" text-anchor="middle">3 Canard module</text><text x="735" y="215" text-anchor="middle">4 Fin can</text>
+<text x="260" y="20" text-anchor="middle">Coupler sleeves at each joint</text>
+<line x1="260" y1="26" x2="260" y2="84" stroke="var(--grey)"/><line x1="260" y1="26" x2="450" y2="84" stroke="var(--grey)"/><line x1="260" y1="26" x2="640" y2="84" stroke="var(--grey)"/>
+</svg><figcaption>Sample fuselage, four sections with coupler sleeves at each joint</figcaption></figure>
+<figure><img src="assets/rocket-layout.jpg" alt="Vehicle layout from the conceptual design" loading="lazy" style=""><figcaption>Vehicle layout from the conceptual design</figcaption></figure>
+</div>
+</div></dialog>
+
+</div>
+<script>
+(function(){
+var calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var still=calm||!('IntersectionObserver' in window);
+function clamp(v){return Math.max(0,Math.min(1,v));}
+if(!still){
+/* numbers count up when they scroll into view */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+ if(!e.isIntersecting)return; io.unobserve(e.target);
+ var el=e.target,to=parseFloat(el.dataset.count),dec=(el.dataset.count.split('.')[1]||'').length,t0=null;
+ function step(t){if(t0===null)t0=t;var k=clamp((t-t0)/900);k=1-Math.pow(1-k,3);
+  el.textContent=(to*k).toFixed(dec); if(k<1)requestAnimationFrame(step); else el.textContent=el.dataset.count;}
+ el.textContent=(0).toFixed(dec); requestAnimationFrame(step);
+});},{threshold:0.6});
+document.querySelectorAll('[data-count]').forEach(function(el){io.observe(el);});
+/* robot clip plays only while it is on screen */
+var v=document.querySelector('.sec video');
+if(v){new IntersectionObserver(function(es){es.forEach(function(e){
+ if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){});}else v.pause();});},{threshold:0.5}).observe(v);}
+/* carrier board: screen holds while nine boards merge into one */
+var sc=document.querySelector('.scene'),ticking=false;
+var fit=function(){var on=window.innerWidth>=900&&window.innerHeight>=640;sc.classList.toggle('pin',on);update();};
+var update=function(){ticking=false;if(!sc.classList.contains('pin'))return;
+ var r=sc.getBoundingClientRect(),p=clamp(-r.top/(r.height-window.innerHeight));
+ sc.style.setProperty('--s',(1-clamp(p/0.5)).toFixed(3));
+ sc.style.setProperty('--f',clamp((p-0.55)/0.3).toFixed(3));};
+if(sc){window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
+ window.addEventListener('resize',fit);fit();}
+}
+/* detail sheets */
+function openSheet(id){var d=document.getElementById('d-'+id);if(d&&!d.open){d.showModal();d.scrollTop=0;try{history.replaceState(null,'','#'+id);}catch(e){}}}
+document.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(){openSheet(b.dataset.open);});});
+document.querySelectorAll('dialog.sheet').forEach(function(d){
+ d.addEventListener('click',function(e){if(e.target===d||e.target.hasAttribute('data-close'))d.close();});
+ d.addEventListener('close',function(){try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}});});
+if(location.hash.length>1)openSheet(location.hash.slice(1));
+})();
+</script>
+</body>
+</html>
