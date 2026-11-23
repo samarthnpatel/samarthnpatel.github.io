@@ -268,6 +268,17 @@ doc = f'''<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sam Patel | Hardware Portfolio</title>
 <meta name="description" content="Sam Patel. Hardware Engineer and Co-Lead, Grounded Low Voltage Team, SFU Formula SAE Electric. Mechatronic Systems Engineering and Business Administration, Simon Fraser University.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://samarthnpatel.github.io/">
+<meta property="og:site_name" content="Sam Patel">
+<meta property="og:title" content="Sam Patel | Hardware Portfolio">
+<meta property="og:description" content="Hardware Engineer and Co-Lead, Grounded Low Voltage Team, SFU Formula SAE Electric. Mechatronic Systems Engineering and Business Administration, Simon Fraser University.">
+<meta property="og:image" content="https://samarthnpatel.github.io/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sam Patel, Hardware Portfolio. Low-voltage electronics for a 400 V race car.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://samarthnpatel.github.io/assets/og-image.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600&display=swap">
 <style>{css}</style>
 </head>
